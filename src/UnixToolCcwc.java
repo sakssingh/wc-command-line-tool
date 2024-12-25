@@ -5,26 +5,7 @@ import java.nio.file.Files;
 
 public class UnixToolCcwc {
     public static void main(String[] args) throws IOException {
-        if (isPipedInput()) {
-            processPipedInput(args);
-        } else {
-            processInteractiveInput(args);
-        }
-    }
-    private static boolean isPipedInput() {
-        try {
-            if (System.console() != null) {
-                return false;
-            }
-            return System.in.available() <= 0;
-        } catch (IOException e) {
-            return false;
-        }
-    }
-
-    private static void processPipedInput(String[] args) {
-        String option = args.length == 1 ? args[0] : "";
-        printResults(processCommand(option, System.in), "");
+        processInteractiveInput(args);
     }
 
     private static void processInteractiveInput(String[] args) {
